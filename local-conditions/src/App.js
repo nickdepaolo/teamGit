@@ -1,43 +1,30 @@
-import React, {useState} from 'react';
-// import 'bootstrap/dist/css/bootstrap.css'
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
-import Weather from "./weather/Weather"
+import Weather from "./weather/Weather";
+import NASAEarth from "./NASA/earth";
 
 function App()
 {
-    const [lon, setLon] = useState("");
-    const [lat, setLat] = useState("");
+   
     
+    // const updateLocation = (props) => {
+    //   // localStorage.setItem('lon', lon);
+    //   // localStorage.setItem('lat', `${lat}`);
+    //   console.log(`${lat}`);
+    // }
     
-    const locate = (props) => {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        setLat(position.coords.latitude);
-        setLon(position.coords.longitude);
-      });
-      updateLocation();
-    }
-    
-    const updateLocation = () => {
-      localStorage.setItem('lon', lon);
-      localStorage.setItem('lat', `${lat}`);
-      console.log(`${lat}`);
-    }
-    
-    locate()
-    
-
-
-      
-
 
     return(
-      <>
-      <h1>sccdcdc</h1>
-      <Weather/>
-      </>
+  <div>
+     <h1>Team 3 24-Hour Project</h1>
+      <Weather />
+      <NASAEarth />
+  </div>
+      
+    
     );
 
 }
-
 
 export default App;
