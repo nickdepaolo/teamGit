@@ -1,8 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Container, Col, Row, Button, Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle } from 'reactstrap';
-import "./Weather.css"
-
+import { Container, Col, Button, Row } from 'reactstrap';
 const UpdateWeather = () => {
     const [lat, setLat] = useState(false);
     const [lon, setLon] = useState('');
@@ -21,9 +18,9 @@ const UpdateWeather = () => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${tempGrade}&appid=b8e15013886caf192c16ed2b4c284e3d`)
         .then((res) => res.json())
         .then((props) => {
-            setTemp(`Temperature: ${(props.main.temp).toFixed(0)}`)
+            setTemp(`Temp: ${(props.main.temp).toFixed(0)}`)
             setHumid(`Humidity: ${props.main.humidity}%`)
-            setConditions(`Current forecast: ${props.weather[0].description}`)
+            setConditions(props.weather[0].main)
             console.log(props);
         })
         .then(() =>{
@@ -34,28 +31,32 @@ const UpdateWeather = () => {
     useEffect(() => {
         fetchWeather();
     }, [])
+
+    
     const changeGrade = () => {
         if (grade === 'F') {
             setGrade('C')
             setTempGrade('metric')
+            
         } else {
             setGrade('F')
             setTempGrade('imperial')
+            
         }
     }
     return(
-        <Card className='main'>
+        <Container >
             <Col>
-               <h1>Weather Conditions</h1>
-               <h3>{`${conditions}`}</h3>
-               {/* <h3>{`${temp}`}</h3> */}
+               <h1>Weather</h1>
+               <h2>{`${conditions}`}</h2>
+               <Row>
                
-               <h3>{`${temp}`}<Button id="toggle" onClick={changeGrade} type='button'>{`${grade}`}</Button></h3>
-               
-               <h3>{`${humid}`}</h3>
+               <h2>{`${temp}`}<Button onClick={changeGrade} type='button'>{`${grade}`}</Button></h2>
+               </Row>
+               <h2>{`${humid}`}</h2>
             </Col>
             <Button type='button' onClick={getApi}>Check the Weather</Button>
-        </Card>
+        </Container>
     );
 }
-export default UpdateWeather
+export default UpdateWeather;
