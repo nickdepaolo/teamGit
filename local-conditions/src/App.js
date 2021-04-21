@@ -7,14 +7,6 @@ import NASAEarth from "./NASA/earth";
 function App()
 {
    
-    
-    // const updateLocation = (props) => {
-    //   // localStorage.setItem('lon', lon);
-    //   // localStorage.setItem('lat', `${lat}`);
-    //   console.log(`${lat}`);
-    // }
-    
-
     return(
   <div>
      <h1>Team 3 24-Hour Project</h1>
