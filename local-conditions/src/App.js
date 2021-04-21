@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import './App.css';
+import './App.css'; develop
 import Weather from "./weather/Weather";
 import NASAEarth from "./NASA/earth";
 
@@ -15,6 +15,18 @@ function App()
   </div>
       
     
+
+import UpdateWeather from "./weather/Weather"
+
+function App()
+{
+
+    return(
+      <>
+      <h1>sccdcdc</h1>
+      <UpdateWeather/>
+      </>
+ main
     );
 
 }

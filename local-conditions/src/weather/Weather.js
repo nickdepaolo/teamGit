@@ -19,16 +19,44 @@ console.log(lat);
 const fetchWeather = () => {
        
         fetch(url).then((res) => res.json())
+=======
+   
+    const Locate = () => {
+        
+        navigator.geolocation.getCurrentPosition(function(position) {
+          setLat(position.coords.latitude);
+          setLon(position.coords.longitude);
+        })
+       
+       
+    }
+    
+    Locate();
+
+    const fetchWeather = () => {
+        
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=b8e15013886caf192c16ed2b4c284e3d`, {
+            method: 'GET'
+           
+        }).then((res) => res.json())
+
         .then((props) => {
             console.log(props)
             setTemp(props.main)
             console.log(`${temp}`)
         })
+
      
+
+
     }
     useEffect(() => {
         fetchWeather();
     }, [])
+
+
+
+
 
 
     const weatherMapper = (props) => {  console.log(props)
