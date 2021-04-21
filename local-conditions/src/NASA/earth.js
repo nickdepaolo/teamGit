@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import './earth.css'
 import {Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle,} from 'reactstrap';
 
@@ -26,6 +27,10 @@ const NASAEarth = (event) => {
     let url = `${baseURL}?lon=${lon}&lat=${lat}&api_key=${key}`
 
     return(
+
+
+        <Card>
+          <h2>Current Position</h2>
      <Card>
         <CardImg style={imgStyle} src={url} alt="Location-based Sattelite image" />
         <CardBody>

@@ -2,16 +2,22 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'; 
 import UpdateWeather from "./weather/Weather";
+
 import NASAEarth from "./NASA/earth";
+import './App.css'
 
 function App()
 {
    
     return(
-  <div>
-     <h1>Team 3 24-Hour Project</h1>
-      <UpdateWeather />
+
+  <div className="main">
+    <div className="mainDiv">
+     <h1>Today's Local Conditions</h1>
       <NASAEarth />
+      <br />
+      <UpdateWeather />
+    </div>  
   </div>
     )
 }

@@ -1,0 +1,11 @@
+.main{
+    text-align: center;
+}
+button{
+    width:25%;
+    margin:auto;
+}
+#toggle{
+    width: 5% !important;
+    margin-left: 10px;
+}
