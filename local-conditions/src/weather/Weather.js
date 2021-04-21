@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { Container, Col, Button, Row } from 'reactstrap';
+import { Card, Col, Button, Row } from 'reactstrap';
+import './Weather.css';
 const UpdateWeather = () => {
     const [lat, setLat] = useState(false);
     const [lon, setLon] = useState('');
@@ -45,18 +46,17 @@ const UpdateWeather = () => {
         }
     }
     return(
-        <Container >
+        <Card >
             <Col>
                <h1>Weather</h1>
                <h2>{`${conditions}`}</h2>
-               <Row>
-               
-               <h2>{`${temp}`}<Button onClick={changeGrade} type='button'>{`${grade}`}</Button></h2>
-               </Row>
+               <h2>{`${temp}`}<Button id='toggle' onClick={changeGrade} type='button'>{`${grade}`}</Button></h2>
+               <p className='text-muted'>Click check weather to dispay preferred unit</p>
+
                <h2>{`${humid}`}</h2>
             </Col>
             <Button type='button' onClick={getApi}>Check the Weather</Button>
-        </Container>
+        </Card>
     );
 }
 export default UpdateWeather;

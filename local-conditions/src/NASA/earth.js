@@ -29,16 +29,17 @@ const NASAEarth = (event) => {
     return(
 
 
-        <Card>
-          <h2>Current Position</h2>
+        
      <Card>
+          <h2>Current Position</h2>
         <CardImg style={imgStyle} src={url} alt="Location-based Sattelite image" />
         <CardBody>
           <CardTitle tag="h5">NASA Earth Image</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Current Sattelite Image</CardSubtitle>
-          <CardText>Most recent Sattelite image from your location Latitude: {lat}, Longitude: {lon} </CardText>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">Current Satellite Image</CardSubtitle>
+          <CardText>Most recent Satellite image from your location Latitude: {lat}, Longitude: {lon} </CardText>
         </CardBody>
       </Card>
+      
     )
 }
 
