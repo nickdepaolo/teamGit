@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import { Container, Col, Button } from 'reactstrap';
+import { Container, Col, Row, Button, Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle } from 'reactstrap';
+import "./Weather.css"
+
 const UpdateWeather = () => {
     const [lat, setLat] = useState(false);
     const [lon, setLon] = useState('');
     const [temp, setTemp] = useState('');
     const [humid, setHumid] = useState('')
     const [conditions, setConditions] = useState('')
+    const [grade, setGrade] = useState('F')
+    const [tempGrade, setTempGrade] = useState('imperial')
     const fetchWeather = () => {
         navigator.geolocation.getCurrentPosition(function(position) {
           setLat(position.coords.latitude);
@@ -13,12 +18,12 @@ const UpdateWeather = () => {
         });
     }
     const getApi =()=>{
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=b8e15013886caf192c16ed2b4c284e3d`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${tempGrade}&appid=b8e15013886caf192c16ed2b4c284e3d`)
         .then((res) => res.json())
         .then((props) => {
-            setTemp(`Temp: ${(props.main.temp).toFixed(0)}`)
+            setTemp(`Temperature: ${(props.main.temp).toFixed(0)}`)
             setHumid(`Humidity: ${props.main.humidity}%`)
-            setConditions(props.weather[0].main)
+            setConditions(`Current forecast: ${props.weather[0].description}`)
             console.log(props);
         })
         .then(() =>{
@@ -29,16 +34,28 @@ const UpdateWeather = () => {
     useEffect(() => {
         fetchWeather();
     }, [])
+    const changeGrade = () => {
+        if (grade === 'F') {
+            setGrade('C')
+            setTempGrade('metric')
+        } else {
+            setGrade('F')
+            setTempGrade('imperial')
+        }
+    }
     return(
-        <Container >
+        <Card className='main'>
             <Col>
-               <h1>Weather</h1>
-               <h2>{`${conditions}`}</h2>
-               <h2>{`${temp}`}</h2>
-               <h2>{`${humid}`}</h2>
+               <h1>Weather Conditions</h1>
+               <h3>{`${conditions}`}</h3>
+               {/* <h3>{`${temp}`}</h3> */}
+               
+               <h3>{`${temp}`}<Button id="toggle" onClick={changeGrade} type='button'>{`${grade}`}</Button></h3>
+               
+               <h3>{`${humid}`}</h3>
             </Col>
             <Button type='button' onClick={getApi}>Check the Weather</Button>
-        </Container>
+        </Card>
     );
 }
 export default UpdateWeather

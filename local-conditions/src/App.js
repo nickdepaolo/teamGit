@@ -2,16 +2,18 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Weather from "./weather/Weather";
 import NASAEarth from "./NASA/earth";
+import './App.css'
 
 function App()
 {
    
     return(
-  <div class="main">
-    <div class="mainDiv">
-     <h1>Team 3 24-Hour Project</h1>
-      <Weather />
+  <div className="main">
+    <div className="mainDiv">
+     <h1>Today's Local Conditions</h1>
       <NASAEarth />
+      <br />
+      <Weather />
     </div>  
   </div>
       

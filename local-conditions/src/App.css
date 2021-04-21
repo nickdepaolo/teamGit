@@ -1,0 +1,10 @@
+body{
+    width: 80%;
+    margin: auto;
+    margin-top: 5em; margin-bottom: 5em;
+    background-color: #e07a5f;
+}
+h1{
+    color: #f2cc8f;
+    text-align: center;
+}
